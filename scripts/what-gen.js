@@ -1,4 +1,6 @@
 const canvas = document.getElementById("js-frame");
+const tip    = document.getElementById("js-tip");
+
 const ctx = canvas.getContext("2d");
 
 canvas.width = 500;
@@ -91,4 +93,5 @@ function handlePaste(file) {
 
   // call "drawFrame" function passing this (being image) as an arg
   image.onload = () => drawFrame(image);
+  tip.innerText = "ctrl+c to copy.";
 }
