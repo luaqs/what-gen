@@ -13,7 +13,7 @@ function drawFrame(image) {
   const margin = 5;
 
   // scale image down
-  let width  = 300;
+  let width  = 450;
   let height = width * image.height / image.width;
 
   // save these to stop repetitiveness
