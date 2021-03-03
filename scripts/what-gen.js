@@ -1,12 +1,16 @@
 const canvas = document.getElementById("js-frame");
+const ctx = canvas.getContext("2d");
 
 canvas.width = 500;
 canvas.height = 400;
 
-const ctx = canvas.getContext("2d");
+// whether the frame is active
+let isPresent = false;
+
 
 function drawFrame(image) {
-  // scale image down to be 3/4 of the canvas' width
+  isPresent = true;
+
   ctx.fillStyle = "#000000";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -46,13 +50,26 @@ function drawFrame(image) {
   ctx.fillText("what.", canvas.width / 2, canvas.height - top / 2 + 16);
 }
 
+// copy pasting
+window.addEventListener("keydown", event => {
+  if (!event.ctrlKey || event.key !== 'c') {
+    return; // wasn't CTRL + C
+  }
+
+  event.preventDefault();
+  canvas.toBlob(blob => {
+    let data = new ClipboardItem({ "image/png": blob });
+    navigator.clipboard.write([ data ]);
+  });
+});
+
 // allow pasting
-window.addEventListener("paste", async (e) => {
-  e.preventDefault();
-  e.stopPropagation();
+window.addEventListener("paste", async (event) => {
+  event.preventDefault();
+  event.stopPropagation();
 
   // handle pasting
-  for (let item of e.clipboardData.items) {
+  for (let item of event.clipboardData.items) {
     // make sure it is a type of image
     if (item.type.indexOf("image") === -1) {
       continue;
