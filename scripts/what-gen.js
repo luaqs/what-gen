@@ -52,7 +52,7 @@ function drawFrame(image) {
 
 // copy pasting
 window.addEventListener("keydown", event => {
-  if (!event.ctrlKey || event.key !== 'c') {
+  if (!isPresent || !event.ctrlKey || event.key !== 'c') {
     return; // wasn't CTRL + C
   }
 
