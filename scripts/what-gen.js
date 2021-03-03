@@ -11,10 +11,17 @@ function drawFrame(image) {
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   const margin = 5;
+  const maxHeight = canvas.height - 125;
 
   // scale image down
   let width  = 450;
   let height = width * image.height / image.width;
+
+  // cap the height
+  if (height >= maxHeight) {
+    height = maxHeight;
+    width  = height * image.width / image.height;
+  }
 
   // save these to stop repetitiveness
   let top  = canvas.height / 2 - height / 2;
@@ -35,7 +42,8 @@ function drawFrame(image) {
 
   ctx.font = "32px Times new Roman";
 
-  ctx.fillText("what.", canvas.width / 2, canvas.height - top / 2);
+  // 16 is half of 32
+  ctx.fillText("what.", canvas.width / 2, canvas.height - top / 2 + 16);
 }
 
 // allow pasting
