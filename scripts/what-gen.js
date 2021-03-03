@@ -50,6 +50,15 @@ function drawFrame(image) {
 
   // 16 is half of 32
   ctx.fillText("what.", canvas.width / 2, canvas.height - top / 2 + 16);
+
+  // draw watermark for free publicity
+  const wm = "ihaveno.faith";
+
+  ctx.font = "12px Times new Roman";
+  ctx.fillStyle = "#ffffff7f"
+  ctx.textAlign = "right";
+
+  ctx.fillText(wm, canvas.width - 10, 10 + 8);
 }
 
 // copy pasting
@@ -62,6 +71,8 @@ window.addEventListener("keydown", event => {
   canvas.toBlob(blob => {
     let data = new ClipboardItem({ "image/png": blob });
     navigator.clipboard.write([ data ]);
+
+    tip.innerText = "copied.";
   });
 });
 
