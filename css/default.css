@@ -1,0 +1,12 @@
+body {
+  padding: 0;
+  margin: 0;
+
+  height: 100vh;
+  overflow: hidden;
+
+  color: #ffffff;
+  font-family: 'Times New Roman', Times, serif;
+
+  background: #000000;
+}

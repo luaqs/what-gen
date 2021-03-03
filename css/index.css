@@ -1,0 +1,18 @@
+.base-wrapper {
+  display: flex;
+  flex-flow: column;
+
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+
+  height: 100vh;
+}
+
+#js-frame {
+  border: 1px solid #ffffff;
+}
+
+.base__tip {
+  font-size: 2em;
+}
